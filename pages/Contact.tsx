@@ -36,7 +36,7 @@ const Contact: React.FC = () => {
     try {
       // EmailJS configuration
       const SERVICE_ID = 'service_9v7psvt';  // Replace with your Service ID
-      const TEMPLATE_ID = 'template_04ijdou'; // Replace with your Template ID
+      const TEMPLATE_ID = 'template_rx0cq3c'; // Replace with your Template ID
       const PUBLIC_KEY = 'CyGibNb46EpQqmGCQ'; // Replace with your Public Key
       
       console.log('Sending email with:', { SERVICE_ID, TEMPLATE_ID });
@@ -150,7 +150,7 @@ const Contact: React.FC = () => {
               </label>
               <input 
                 id="full-name" 
-                name="from_name"
+                name="name"
                 type="text" 
                 required 
                 value={formState.name} 
@@ -166,7 +166,7 @@ const Contact: React.FC = () => {
               </label>
               <input 
                 id="email-address" 
-                name="reply_to"
+                name="email"
                 type="email" 
                 required 
                 value={formState.email} 
