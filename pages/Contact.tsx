@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-// pages/Contact.tsx - COMPLETE UPDATED VERSION
+// pages/Contact.tsx
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -21,12 +20,6 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
     setError(null);
     
-    if (!formRef.current) {
-      setError('Form reference not found');
-      setIsSubmitting(false);
-      return;
-    }
-    
     // Basic validation
     if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) {
       setError('Please fill in all required fields');
@@ -34,24 +27,46 @@ const Contact: React.FC = () => {
       return;
     }
     
+    if (!formRef.current) {
+      setError('Form error. Please try again.');
+      setIsSubmitting(false);
+      return;
+    }
+    
     try {
-      // REPLACE THESE WITH YOUR ACTUAL EMAILJS CREDENTIALS
+      // EmailJS configuration
+      const SERVICE_ID = 'service_9v7psvt';  // Replace with your Service ID
+      const TEMPLATE_ID = 'template_rx0cq3c'; // Replace with your Template ID
+      const PUBLIC_KEY = 'CyGibNb46EpQqmGCQ'; // Replace with your Public Key
+      
+      console.log('Sending email with:', { SERVICE_ID, TEMPLATE_ID });
+      
       const result = await emailjs.sendForm(
-        'service_9v7psvt',       // Find in EmailJS Dashboard > Email Services
-        'template_04ijdou',      // Find in EmailJS Dashboard > Email Templates
+        SERVICE_ID,
+        TEMPLATE_ID,
         formRef.current,
-        'CyGibNb46EpQqmGCQ'        // Find in EmailJS Dashboard > Account > API Keys
+        PUBLIC_KEY
       );
       
-      console.log('Email sent successfully:', result.text);
+      console.log('✅ Email sent successfully:', result.status, result.text);
       setIsSubmitting(false);
       setSubmitted(true);
       setFormState({ name: '', email: '', service: 'Full-Stack', message: '' });
       
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+      
     } catch (error: any) {
-      console.error('Failed to send email:', error);
+      console.error('❌ Email failed:', error);
       setIsSubmitting(false);
-      setError(error.text || 'Failed to send message. Please try again or email me directly.');
+      setError(error.text || 'Failed to send message. Please email me directly at muhammadahmer1qw2@gmail.com');
+      
+      // Auto-hide error after 5 seconds
+      setTimeout(() => {
+        setError(null);
+      }, 5000);
     }
   };
 
@@ -63,24 +78,6 @@ const Contact: React.FC = () => {
        id === 'email-address' ? 'email' :
        id === 'inquiry-type' ? 'service' : 'message']: value
     }));
-=======
-
-import React, { useState } from 'react';
-
-const Contact: React.FC = () => {
-  const [formState, setFormState] = useState({ name: '', email: '', service: 'Full-Stack', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormState({ name: '', email: '', service: 'Full-Stack', message: '' });
-    }, 1500);
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
   };
 
   return (
@@ -117,41 +114,43 @@ const Contact: React.FC = () => {
       </div>
 
       <div className="flex-1 bg-white/[0.02] border border-white/10 p-12 md:p-16">
+        {error && (
+          <div className="mb-6 p-4 border border-red-500/30 bg-red-500/10 rounded animate-fade-in-up">
+            <p className="text-red-400 text-sm font-bold uppercase tracking-wider flex items-center">
+              <i className="fas fa-exclamation-circle mr-2"></i>
+              {error}
+            </p>
+          </div>
+        )}
+        
         {submitted ? (
-          <div className="text-center py-20 space-y-8 animate-fadeIn" role="alert">
-            <div className="w-20 h-20 border border-emerald-500 flex items-center justify-center mx-auto mb-6">
+          <div className="text-center py-20 space-y-8 animate-fade-in-up" role="alert">
+            <div className="w-20 h-20 border border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <i className="fas fa-check text-emerald-500 text-3xl" aria-hidden="true"></i>
             </div>
-            <h2 className="text-3xl font-black uppercase tracking-tighter text-white">Message Sent</h2>
-<<<<<<< HEAD
+            <h2 className="text-3xl font-black uppercase tracking-tighter text-white">Message Sent!</h2>
             <p className="text-slate-400 uppercase text-xs tracking-widest font-bold">
-              I've received your message and will get back to you personally within 24 hours.
+              I've received your message and will get back to you within 24 hours.
+            </p>
+            <p className="text-blue-500 text-[10px] font-bold uppercase tracking-widest">
+              Check your email for confirmation.
             </p>
             <button 
               onClick={() => setSubmitted(false)} 
-              className="text-blue-500 font-black uppercase text-xs tracking-widest border-b border-blue-500/30 hover:border-blue-500 pb-1 transition-all"
+              className="text-blue-500 font-black uppercase text-xs tracking-widest border-b border-blue-500/30 hover:border-blue-500 pb-1 transition-all mt-8"
             >
               Send Another Message
             </button>
           </div>
         ) : (
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
-            {error && (
-              <div className="p-4 border border-red-500/30 bg-red-500/10 rounded">
-                <p className="text-red-400 text-sm font-bold uppercase tracking-wider flex items-center">
-                  <i className="fas fa-exclamation-circle mr-2"></i>
-                  {error}
-                </p>
-              </div>
-            )}
-            
             <div className="space-y-2">
               <label htmlFor="full-name" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">
                 Full Name *
               </label>
               <input 
                 id="full-name" 
-                name="name"
+                name="from_name"
                 type="text" 
                 required 
                 value={formState.name} 
@@ -167,12 +166,12 @@ const Contact: React.FC = () => {
               </label>
               <input 
                 id="email-address" 
-                name="email"
+                name="reply_to"
                 type="email" 
                 required 
                 value={formState.email} 
                 onChange={handleChange}
-                placeholder="Email for reply" 
+                placeholder="your.email@example.com" 
                 className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white placeholder:text-slate-700 font-bold uppercase tracking-widest text-sm"
               />
             </div>
@@ -183,35 +182,16 @@ const Contact: React.FC = () => {
               </label>
               <select 
                 id="inquiry-type" 
-                name="service"
+                name="service_type"
                 value={formState.service} 
                 onChange={handleChange}
-                className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white font-bold uppercase tracking-widest text-sm appearance-none"
+                className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white font-bold uppercase tracking-widest text-sm appearance-none cursor-pointer"
               >
-=======
-            <p className="text-slate-400 uppercase text-xs tracking-widest font-bold">I will get back to you personally within 24 hours.</p>
-            <button onClick={() => setSubmitted(false)} className="text-blue-500 font-black uppercase text-xs tracking-widest border-b border-blue-500/30 hover:border-blue-500 pb-1">Send Another</button>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="space-y-2">
-              <label htmlFor="full-name" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Full Name</label>
-              <input id="full-name" type="text" required value={formState.name} onChange={(e) => setFormState({...formState, name: e.target.value})} placeholder="Enter your name" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white placeholder:text-slate-700 font-bold uppercase tracking-widest text-sm" />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="email-address" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Email Address</label>
-              <input id="email-address" type="email" required value={formState.email} onChange={(e) => setFormState({...formState, email: e.target.value})} placeholder="Email for reply" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white placeholder:text-slate-700 font-bold uppercase tracking-widest text-sm" />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="inquiry-type" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Inquiry Type</label>
-              <select id="inquiry-type" value={formState.service} onChange={(e) => setFormState({...formState, service: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white font-bold uppercase tracking-widest text-sm appearance-none">
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
                 <option value="Full-Stack" className="bg-[#0a0a0c]">Full-Stack Build</option>
                 <option value="Junior-Role" className="bg-[#0a0a0c]">Junior Role / Hiring</option>
                 <option value="Collaboration" className="bg-[#0a0a0c]">Collaboration</option>
               </select>
             </div>
-<<<<<<< HEAD
             
             <div className="space-y-2">
               <label htmlFor="message" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">
@@ -223,9 +203,9 @@ const Contact: React.FC = () => {
                 required 
                 value={formState.message} 
                 onChange={handleChange}
-                placeholder="Tell me about your project..." 
-                rows={4} 
-                className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white resize-none placeholder:text-slate-700 font-bold uppercase tracking-widest text-sm"
+                placeholder="Tell me about your project, timeline, and budget..." 
+                rows={5} 
+                className="w-full bg-transparent border border-white/10 rounded p-4 focus:outline-none focus:border-blue-500 transition-all text-white resize-none placeholder:text-slate-700 font-bold uppercase tracking-widest text-sm"
               ></textarea>
             </div>
             
@@ -236,29 +216,20 @@ const Contact: React.FC = () => {
             >
               {isSubmitting ? (
                 <>
-                  <i className="fas fa-sync fa-spin" aria-hidden="true"></i>
-                  Sending...
+                  <i className="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
+                  SENDING...
                 </>
               ) : (
                 <>
-                  Send Message 
-                  <i className="fas fa-long-arrow-alt-right" aria-hidden="true"></i>
+                  SEND MESSAGE 
+                  <i className="fas fa-paper-plane ml-2" aria-hidden="true"></i>
                 </>
               )}
             </button>
             
-            <p className="text-slate-600 text-xs text-center font-bold uppercase tracking-widest pt-4">
-              * Required fields. I'll respond within 24 hours.
+            <p className="text-slate-600 text-xs text-center font-bold uppercase tracking-widest pt-4 border-t border-white/10">
+              * Required fields. Response time: 12-24 hours.
             </p>
-=======
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Message</label>
-              <textarea id="message" required value={formState.message} onChange={(e) => setFormState({...formState, message: e.target.value})} placeholder="Tell me about your project..." rows={4} className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white resize-none placeholder:text-slate-700 font-bold uppercase tracking-widest text-sm"></textarea>
-            </div>
-            <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-white text-black font-black uppercase text-xs tracking-[0.4em] hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center gap-4">
-              {isSubmitting ? <i className="fas fa-sync fa-spin" aria-hidden="true"></i> : <>Send Message <i className="fas fa-long-arrow-alt-right" aria-hidden="true"></i></>}
-            </button>
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
           </form>
         )}
       </div>
@@ -266,8 +237,4 @@ const Contact: React.FC = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Contact;
-=======
-export default Contact;
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 // pages/Portfolio.tsx
-=======
-
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
 import React, { useState, useEffect } from 'react';
 
 interface Project {
@@ -345,8 +341,4 @@ const Portfolio: React.FC = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Portfolio;
-=======
-export default Portfolio;
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd

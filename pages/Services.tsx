@@ -98,8 +98,4 @@ const Services: React.FC = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Services;
-=======
-export default Services;
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd

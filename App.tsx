@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// App.tsx - Updated with ScrollToTop
-=======
-
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
+// App.tsx
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
@@ -11,10 +7,7 @@ import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-<<<<<<< HEAD
-import ScrollToTop from './components/ScrollToTop';  // ADD THIS IMPORT
-=======
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
+import ScrollToTop from './components/ScrollToTop';
 
 const TitleHandler: React.FC = () => {
   const location = useLocation();
@@ -53,20 +46,11 @@ const App: React.FC = () => {
           </Routes>
         </main>
 
-<<<<<<< HEAD
-        {/* ADD SCROLLTOTOP BUTTON HERE */}
         <ScrollToTop />
-        
-=======
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
         <Footer />
       </div>
     </Router>
   );
 };
 
-<<<<<<< HEAD
 export default App;
-=======
-export default App;
->>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
