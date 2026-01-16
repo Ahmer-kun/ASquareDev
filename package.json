@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@emailjs/browser": "^4.4.1",
+=======
+>>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-router-dom": "^7.11.0"

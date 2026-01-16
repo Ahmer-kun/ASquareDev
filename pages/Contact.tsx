@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // pages/Contact.tsx - COMPLETE UPDATED VERSION
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
@@ -62,6 +63,24 @@ const Contact: React.FC = () => {
        id === 'email-address' ? 'email' :
        id === 'inquiry-type' ? 'service' : 'message']: value
     }));
+=======
+
+import React, { useState } from 'react';
+
+const Contact: React.FC = () => {
+  const [formState, setFormState] = useState({ name: '', email: '', service: 'Full-Stack', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setFormState({ name: '', email: '', service: 'Full-Stack', message: '' });
+    }, 1500);
+>>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
   };
 
   return (
@@ -104,6 +123,7 @@ const Contact: React.FC = () => {
               <i className="fas fa-check text-emerald-500 text-3xl" aria-hidden="true"></i>
             </div>
             <h2 className="text-3xl font-black uppercase tracking-tighter text-white">Message Sent</h2>
+<<<<<<< HEAD
             <p className="text-slate-400 uppercase text-xs tracking-widest font-bold">
               I've received your message and will get back to you personally within 24 hours.
             </p>
@@ -168,11 +188,30 @@ const Contact: React.FC = () => {
                 onChange={handleChange}
                 className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white font-bold uppercase tracking-widest text-sm appearance-none"
               >
+=======
+            <p className="text-slate-400 uppercase text-xs tracking-widest font-bold">I will get back to you personally within 24 hours.</p>
+            <button onClick={() => setSubmitted(false)} className="text-blue-500 font-black uppercase text-xs tracking-widest border-b border-blue-500/30 hover:border-blue-500 pb-1">Send Another</button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="space-y-2">
+              <label htmlFor="full-name" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Full Name</label>
+              <input id="full-name" type="text" required value={formState.name} onChange={(e) => setFormState({...formState, name: e.target.value})} placeholder="Enter your name" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white placeholder:text-slate-700 font-bold uppercase tracking-widest text-sm" />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="email-address" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Email Address</label>
+              <input id="email-address" type="email" required value={formState.email} onChange={(e) => setFormState({...formState, email: e.target.value})} placeholder="Email for reply" className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white placeholder:text-slate-700 font-bold uppercase tracking-widest text-sm" />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="inquiry-type" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Inquiry Type</label>
+              <select id="inquiry-type" value={formState.service} onChange={(e) => setFormState({...formState, service: e.target.value})} className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white font-bold uppercase tracking-widest text-sm appearance-none">
+>>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
                 <option value="Full-Stack" className="bg-[#0a0a0c]">Full-Stack Build</option>
                 <option value="Junior-Role" className="bg-[#0a0a0c]">Junior Role / Hiring</option>
                 <option value="Collaboration" className="bg-[#0a0a0c]">Collaboration</option>
               </select>
             </div>
+<<<<<<< HEAD
             
             <div className="space-y-2">
               <label htmlFor="message" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">
@@ -211,6 +250,15 @@ const Contact: React.FC = () => {
             <p className="text-slate-600 text-xs text-center font-bold uppercase tracking-widest pt-4">
               * Required fields. I'll respond within 24 hours.
             </p>
+=======
+            <div className="space-y-2">
+              <label htmlFor="message" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Message</label>
+              <textarea id="message" required value={formState.message} onChange={(e) => setFormState({...formState, message: e.target.value})} placeholder="Tell me about your project..." rows={4} className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-blue-500 transition-all text-white resize-none placeholder:text-slate-700 font-bold uppercase tracking-widest text-sm"></textarea>
+            </div>
+            <button type="submit" disabled={isSubmitting} className="w-full py-6 bg-white text-black font-black uppercase text-xs tracking-[0.4em] hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center gap-4">
+              {isSubmitting ? <i className="fas fa-sync fa-spin" aria-hidden="true"></i> : <>Send Message <i className="fas fa-long-arrow-alt-right" aria-hidden="true"></i></>}
+            </button>
+>>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
           </form>
         )}
       </div>
@@ -218,4 +266,8 @@ const Contact: React.FC = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Contact;
+=======
+export default Contact;
+>>>>>>> 2b0783926fc911fdbde151820668dd6cb99ea0fd
