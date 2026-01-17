@@ -1,3 +1,3 @@
 # ASquareDev
 Development of my latest portfolio
-Link: https://asquardev.vercel.app/
+Link: https://a-square-dev.vercel.app/
