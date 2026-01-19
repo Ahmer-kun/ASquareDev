@@ -39,27 +39,27 @@ const Portfolio: React.FC = () => {
   const projects: Project[] = [
     {
       title: 'MediCheck',
-      category: 'Blockchain / Web3',
+      category: 'FullStack / Blockchain / Web3',
       description: 'A decentralized medical record system built for transparency and security, allowing users to control their healthcare data.',
       image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
       tech: ['Solidity', 'React', 'Ethers.js', 'Node.js'],
       link: 'https://medicheck-eight.vercel.app/'
     },
     {
-      "title": "Quick QR Generator",
-      "category": "Frontend",
-      "description": "A free, modern, and easy-to-use QR code generator built with React and Tailwind CSS. Turn any URL or text into scannable QR codes and download as high-quality PNG images. Fully client-side with privacy-first approach.",
+      title: 'Quick QR Generator',
+      category: 'Frontend',
+      description: 'A free, modern, and easy-to-use QR code generator built with React and Tailwind CSS. Turn any URL or text into scannable QR codes and download as high-quality PNG images. Fully client-side with privacy-first approach.',
       image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&q=80&w=800',
-      "tech": ["React", "TypeScript", "Tailwind CSS", "QRCode Library", "SVG"],
-      "link": "https://qr-code-generator-custodes.vercel.app/"
+      tech: ['React', 'TypeScript', 'Tailwind CSS', 'QRCode Library', 'SVG'],
+      link: 'https://qr-code-generator-custodes.vercel.app/'
 },
     {
-      "title": "Midway Hospital Website",
-      "category": "Frontend",
-      "description": "A simple, responsive, and modern hospital website designed to display hospital details, departments, doctors, services, and contact information. Features a clean, user-friendly interface with appointment forms and Google Maps integration.",
-      image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800'
-      "tech": ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-      "link": "https://midway-green.vercel.app/"
+      title: 'Midway Hospital Website',
+      category: 'Frontend',
+      description: 'A simple, responsive, and modern hospital website designed to display hospital details, departments, doctors, services, and contact information. Features a clean, user-friendly interface with appointment forms and Google Maps integration.',
+      image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800',
+      tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
+      link: 'https://midway-green.vercel.app/'
 },
 
     
@@ -77,7 +77,7 @@ const Portfolio: React.FC = () => {
     {
       id: 'journey-mern-web3',
       title: 'Mastering the Convergence: My Journey into MERN & Web3',
-      date: 'June 2024',
+      date: 'September 2025',
       excerpt: 'How I bridged the gap between traditional full-stack development and the decentralized web through intensive project building.',
       category: 'Personal Journey',
       image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1200',
@@ -103,7 +103,7 @@ const Portfolio: React.FC = () => {
     {
       id: 'tailwind-game-changer',
       title: 'The Utility-First Revolution: Why Tailwind CSS is a Game Changer',
-      date: 'May 2024',
+      date: 'October 2025',
       excerpt: 'An in-depth look at how utility-first CSS transformed my workflow from slow design-iterations to rapid, high-fidelity UI engineering.',
       category: 'Technical Analysis',
       image: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=1200',
@@ -125,7 +125,7 @@ const Portfolio: React.FC = () => {
     {
       id: 'building-projects-fresher',
       title: 'The "Build or Die" Mentality: Projects vs Tutorials',
-      date: 'April 2024',
+      date: 'December 2025',
       excerpt: 'Why watching tutorials can lead to the "illusion of competence" and how building real-world software is the only way to grow.',
       category: 'Career Insights',
       image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200',
