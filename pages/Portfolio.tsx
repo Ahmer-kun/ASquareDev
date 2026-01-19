@@ -46,26 +46,28 @@ const Portfolio: React.FC = () => {
       link: 'https://medicheck-eight.vercel.app/'
     },
     {
-      title: 'A² E-Store',
-      category: 'Full Stack',
-      description: 'A full-featured e-commerce platform built with MERN stack, featuring secure checkout and admin dashboard.',
-      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800',
-      tech: ['MongoDB', 'Express', 'React', 'Node'],
-      link: 'https://github.com/Ahmer-kun'
-    },
+      "title": "Quick QR Generator",
+      "category": "Frontend",
+      "description": "A free, modern, and easy-to-use QR code generator built with React and Tailwind CSS. Turn any URL or text into scannable QR codes and download as high-quality PNG images. Fully client-side with privacy-first approach.",
+      image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&q=80&w=800',
+      "tech": ["React", "TypeScript", "Tailwind CSS", "QRCode Library", "SVG"],
+      "link": "https://qr-code-generator-custodes.vercel.app/"
+},
     {
-      title: 'DevFlow Tasker',
-      category: 'Frontend',
-      description: 'A productivity application focused on developer workflows with local persistence and intuitive UI.',
-      image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800',
-      tech: ['React', 'Tailwind', 'Context API'],
-      link: 'https://github.com/Ahmer-kun'
-    },
+      "title": "Midway Hospital Website",
+      "category": "Frontend",
+      "description": "A simple, responsive, and modern hospital website designed to display hospital details, departments, doctors, services, and contact information. Features a clean, user-friendly interface with appointment forms and Google Maps integration.",
+      image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800'
+      "tech": ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+      "link": "https://midway-green.vercel.app/"
+},
+
+    
     {
       title: 'Pulse Chat Engine',
       category: 'Full Stack',
       description: 'Real-time communication tool using Socket.io for instant data synchronization and secure messaging.',
-      image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&q=80&w=800',
+      "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800",
       tech: ['Node.js', 'Socket.io', 'React'],
       link: 'https://github.com/Ahmer-kun'
     }
