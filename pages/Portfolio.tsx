@@ -153,44 +153,15 @@ const Portfolio: React.FC = () => {
         }
       ]
     },
+
     {
-  id: 'building-ai-chatbot-nodejs',
-  title: 'From Zero to AI: Building a Chatbot with Node.js & the OpenAI API',
-  date: 'March 2026',
-  excerpt: 'A practical, no-fluff guide to integrating a real LLM into your Node.js backend — from API setup to streaming responses in a React frontend.',
-  category: 'Tutorial / How-To',
-  image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=1200',
-  content: [
-    {
-      heading: "Why Node.js is Perfect for AI Integration",
-      text: "Most LLM tutorials throw you into Python territory. But if you're already living in the JavaScript ecosystem, there's no reason to switch. Node.js with the official OpenAI SDK gives you everything you need — non-blocking I/O for streaming tokens, Express for routing, and a clean async/await pattern that keeps your code readable. The setup is minimal, the feedback loop is fast, and you can wire it directly to your existing React frontend without context-switching languages."
-    },
-    {
-      heading: "Setting Up the Backend",
-      text: "Start by initializing a Node.js project and installing two packages: express and openai. Create a POST route at /api/chat that accepts a messages array from the client — this is the conversation history. Inside the handler, instantiate the OpenAI client using your API key stored in a .env file (never hardcode it). Call openai.chat.completions.create() with your chosen model, the messages array, and a system prompt that defines your chatbot's personality. For an intermediate setup, gpt-4o-mini hits the sweet spot between capability and cost. Return the assistant's reply as JSON and you have a functioning AI endpoint in under 30 lines."
-    },
-    {
-      heading: "Streaming: The Feature That Changes Everything",
-      text: "A chatbot that waits 5 seconds before dumping a wall of text feels broken. Streaming fixes this. Set stream: true in your OpenAI call, then pipe the response chunks directly to the client using res.write(). On the React side, use the Fetch API with a ReadableStream reader to process each chunk as it arrives and append it to your state in real-time. The result is that typewriter effect users expect from modern AI tools. It's a small architectural change that makes your app feel production-grade. One gotcha: make sure to set the Content-Type header to text/event-stream and handle the stream's done signal to close the connection cleanly."
-    },
-    {
-      heading: "Managing Conversation History",
-      text: "LLMs are stateless — they have no memory between calls. Every request must include the full conversation history for the model to maintain context. In React, keep a messages state array and push each new user message and assistant reply into it before every API call. This is the messages array you send to the backend. Be mindful of token limits: very long conversations will eventually exceed the model's context window. A practical solution is to slice the last N messages (say, the most recent 20) before sending, or summarize older turns using a separate API call. This keeps costs predictable and latency low as conversations grow."
-    },
-    {
-      heading: "Deploying & What Comes Next",
-      text: "Once your chatbot works locally, deploying is straightforward. Host your Node.js backend on Railway or Render with your OPENAI_API_KEY set as an environment variable, and your React frontend on Vercel. For a more serious project, consider adding rate limiting with express-rate-limit to protect your API key from abuse, and a simple auth layer so only your users can trigger completions. From here, the rabbit hole goes deep — function calling lets your LLM trigger real actions in your app, RAG (Retrieval-Augmented Generation) lets it answer questions about your own data, and fine-tuning lets you shape its personality. But this foundation is all you need to start shipping AI-powered features today."
-    }
-  ]
-},
-    {
-  id: 'chrome-extensions-mv3-architecture',
-  title: 'Under the Hood: How Chrome Extensions Actually Work in MV3',
-  date: 'February 2026',
-  excerpt: 'A technical breakdown of Manifest V3 architecture — service workers, content scripts, and the messaging system that ties it all together.',
-  category: 'Technical Deep-Dive',
-  image: 'https://images.unsplash.com/photo-1607798748738-b15c40d33d57?auto=format&fit=crop&q=80&w=1200',
-  content: [
+      id: 'chrome-extensions-mv3-architecture',
+      title: 'Under the Hood: How Chrome Extensions Actually Work in MV3',
+      date: 'February 2026',
+      excerpt: 'A technical breakdown of Manifest V3 architecture — service workers, content scripts, and the messaging system that ties it all together.',
+      category: 'Technical Deep-Dive',
+      image: 'https://images.unsplash.com/photo-1607798748738-b15c40d33d57?auto=format&fit=crop&q=80&w=1200',
+      content: [
     {
       heading: "MV3: Why Google Rewrote the Rules",
       text: "Manifest V3 wasn't just a version bump — it was a fundamental rethinking of how extensions interact with the browser. The old Manifest V2 model allowed persistent background pages: long-lived JavaScript environments that could hold state, run timers, and intercept network requests with near-unlimited power. Google pulled the plug on this model citing security and performance concerns. MV3 replaced persistent background pages with service workers, swapped blocking webRequest for declarativeNetRequest, and tightened Content Security Policy across the board. For developers, this meant relearning assumptions that had held true for a decade. Understanding why these changes happened is the key to writing extensions that don't fight the platform."
@@ -210,6 +181,37 @@ const Portfolio: React.FC = () => {
     {
       heading: "Permissions, manifest.json & Shipping",
       text: "Your manifest.json is the contract between your extension and the browser. Every API you want to use — tabs, storage, scripting, activeTab — must be declared upfront in the permissions array. MV3 introduced host_permissions as a separate key, which means users see a clearer breakdown of what sites your extension can touch versus what browser APIs it can call. Request the minimum permissions necessary — the Chrome Web Store review team flags over-permissioned extensions, and users are increasingly permission-aware. For content script injection, prefer the scripting.executeScript() API over static content_scripts declarations when you only need to inject on demand. When you're ready to ship, run chrome://extensions in developer mode, load your unpacked folder, and test every message passing path manually. The gap between 'works locally' and 'passes Chrome Web Store review' is almost always a permissions issue or a CSP violation hiding in your code."
+    }
+  ]
+},
+    
+    {
+    id: 'building-ai-chatbot-nodejs',
+    title: 'From Zero to AI: Building a Chatbot with Node.js & the OpenAI API',
+    date: 'March 2026',
+    excerpt: 'A practical, no-fluff guide to integrating a real LLM into your Node.js backend — from API setup to streaming responses in a React frontend.',
+    category: 'Tutorial / How-To',
+    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=1200',
+    content: [
+    {
+      heading: "Why Node.js is Perfect for AI Integration",
+      text: "Most LLM tutorials throw you into Python territory. But if you're already living in the JavaScript ecosystem, there's no reason to switch. Node.js with the official OpenAI SDK gives you everything you need — non-blocking I/O for streaming tokens, Express for routing, and a clean async/await pattern that keeps your code readable. The setup is minimal, the feedback loop is fast, and you can wire it directly to your existing React frontend without context-switching languages."
+    },
+    {
+      heading: "Setting Up the Backend",
+      text: "Start by initializing a Node.js project and installing two packages: express and openai. Create a POST route at /api/chat that accepts a messages array from the client — this is the conversation history. Inside the handler, instantiate the OpenAI client using your API key stored in a .env file (never hardcode it). Call openai.chat.completions.create() with your chosen model, the messages array, and a system prompt that defines your chatbot's personality. For an intermediate setup, gpt-4o-mini hits the sweet spot between capability and cost. Return the assistant's reply as JSON and you have a functioning AI endpoint in under 30 lines."
+    },
+    {
+      heading: "Streaming: The Feature That Changes Everything",
+      text: "A chatbot that waits 5 seconds before dumping a wall of text feels broken. Streaming fixes this. Set stream: true in your OpenAI call, then pipe the response chunks directly to the client using res.write(). On the React side, use the Fetch API with a ReadableStream reader to process each chunk as it arrives and append it to your state in real-time. The result is that typewriter effect users expect from modern AI tools. It's a small architectural change that makes your app feel production-grade. One gotcha: make sure to set the Content-Type header to text/event-stream and handle the stream's done signal to close the connection cleanly."
+    },
+    {
+      heading: "Managing Conversation History",
+      text: "LLMs are stateless — they have no memory between calls. Every request must include the full conversation history for the model to maintain context. In React, keep a messages state array and push each new user message and assistant reply into it before every API call. This is the messages array you send to the backend. Be mindful of token limits: very long conversations will eventually exceed the model's context window. A practical solution is to slice the last N messages (say, the most recent 20) before sending, or summarize older turns using a separate API call. This keeps costs predictable and latency low as conversations grow."
+    },
+    {
+      heading: "Deploying & What Comes Next",
+      text: "Once your chatbot works locally, deploying is straightforward. Host your Node.js backend on Railway or Render with your OPENAI_API_KEY set as an environment variable, and your React frontend on Vercel. For a more serious project, consider adding rate limiting with express-rate-limit to protect your API key from abuse, and a simple auth layer so only your users can trigger completions. From here, the rabbit hole goes deep — function calling lets your LLM trigger real actions in your app, RAG (Retrieval-Augmented Generation) lets it answer questions about your own data, and fine-tuning lets you shape its personality. But this foundation is all you need to start shipping AI-powered features today."
     }
   ]
 }
