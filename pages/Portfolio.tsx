@@ -70,7 +70,16 @@ const Portfolio: React.FC = () => {
       "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800",
       tech: ['Node.js', 'Socket.io', 'React'],
       link: 'https://github.com/Ahmer-kun'
-    }
+    },
+
+    {
+      title: 'Snatchd',
+      category: 'Chrome Extension / Developer Tool',
+      description: 'A Chrome Extension that reverse-engineers any webpage into clean, developer-friendly code. Extracts rendered DOM, computes used-only CSS, collects assets, detects layout structure, and exports a downloadable ZIP with index.html, styles.css, and design tokens.',
+      image: 'https://images.unsplash.com/photo-1607798748738-b15c40d33d57?auto=format&fit=crop&q=80&w=800',
+      tech: ['Chrome MV3', 'JavaScript', 'DOM API', 'CSS Extraction', 'JSZip'],
+      link: 'https://github.com/Ahmer-kun'
+    },
   ];
 
   const blogs: Blog[] = [
