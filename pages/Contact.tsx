@@ -33,10 +33,19 @@ const Contact: React.FC = () => {
     }
     
     try {
+<<<<<<< HEAD
       // EmailJS configuration - Using environment variables
       const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+=======
+      // EmailJS configuration
+      const SERVICE_ID = 'service_9v7psvt';  
+      const TEMPLATE_ID = 'template_04ijdou'; 
+      const PUBLIC_KEY = 'CyGibNb46EpQqmGCQ';  
+      
+      console.log('Sending email with:', { SERVICE_ID, TEMPLATE_ID });
+>>>>>>> 63b629318e47a3f3972dad22ee5606d9d650ffcc
       
       const result = await emailjs.sendForm(
         SERVICE_ID,
@@ -45,6 +54,10 @@ const Contact: React.FC = () => {
         PUBLIC_KEY
       );
       
+<<<<<<< HEAD
+=======
+      console.log('Email sent successfully:', result.status, result.text);
+>>>>>>> 63b629318e47a3f3972dad22ee5606d9d650ffcc
       setIsSubmitting(false);
       setSubmitted(true);
       setFormState({ name: '', email: '', service: 'Full-Stack', message: '' });
@@ -55,7 +68,11 @@ const Contact: React.FC = () => {
       }, 5000);
       
     } catch (error: any) {
+<<<<<<< HEAD
       console.error('Email failed:', error);
+=======
+      console.error('ERROR : Email failed:', error);
+>>>>>>> 63b629318e47a3f3972dad22ee5606d9d650ffcc
       setIsSubmitting(false);
       setError(error.text || 'Failed to send message. Please email me directly at muhammadahmer1qw2@gmail.com');
       
