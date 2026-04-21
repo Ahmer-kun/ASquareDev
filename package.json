@@ -1,5 +1,7 @@
 {
-  "name": "a²-dev-|-fresher-mern-stack-developer",
+  "name": "a2-dev-portfolio",
+  "displayName": "A² Dev | Fresher MERN Stack Developer",
+  "description": "Personal portfolio of Muhammad Ahmer (A² Dev), a fresher full-stack engineer specializing in React, Node.js, and MongoDB.",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,13 +11,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "react-router-dom": "^7.11.0",
-    "@emailjs/browser": "^4.4.1"  
+    "react-router-dom": "^7.11.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"

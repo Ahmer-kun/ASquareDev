@@ -78,6 +78,7 @@
         .gradient-text {
             background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         /* Scroll animation */
@@ -92,6 +93,22 @@
         .scroll-top-btn {
             box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
         }
+
+        @media print {
+        .navbar, .footer, button, .cta-section, .scroll-top-btn {
+          display: none !important;
+        }
+        
+        body {
+          background: white !important;
+          color: black !important;
+        }
+        
+        .resume-page {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+      }
     </style>
     
     <script type="importmap">

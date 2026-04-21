@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -19,6 +18,7 @@ const Navbar: React.FC = () => {
     { name: 'Home', path: '/' },
     { name: 'Skills', path: '/services' },
     { name: 'Projects', path: '/portfolio' },
+    { name: 'Resume', path: '/resume' },
     { name: 'Connect', path: '/contact' },
   ];
 

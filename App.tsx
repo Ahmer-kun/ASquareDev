@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import Resume from './pages/Resume';  // Add this import
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -19,6 +20,7 @@ const TitleHandler: React.FC = () => {
       "/services": `${baseTitle} - Skills & Expertise`,
       "/portfolio": `${baseTitle} - Projects & Portfolio`,
       "/contact": `${baseTitle} - Contact & Hiring`,
+      "/resume": `${baseTitle} - Resume / CV`,  // Add this
     };
     document.title = routeTitles[location.pathname] || baseTitle;
   }, [location]);
@@ -31,7 +33,6 @@ const App: React.FC = () => {
     <Router>
       <TitleHandler />
       <div className="flex flex-col min-h-screen relative overflow-x-hidden">
-        {/* Animated Background Gradients */}
         <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 blur-[120px] rounded-full z-[-1]"></div>
         <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 blur-[120px] rounded-full z-[-1]"></div>
         
@@ -43,6 +44,7 @@ const App: React.FC = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/resume" element={<Resume />} />  // Add this route
           </Routes>
         </main>
 
