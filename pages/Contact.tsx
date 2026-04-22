@@ -14,14 +14,61 @@ const Contact: React.FC = () => {
   
   const formRef = useRef<HTMLFormElement>(null);
 
+// Email validation
+
+  const isValidEmail = (email: string) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) return false;
+  
+  // Block common disposable email domains
+  const disposableDomains = [
+    'tempmail', 'throwaway', '10minutemail', 'guerrillamail',
+    'mailinator', 'yopmail', 'fakeinbox', 'trashmail'
+  ];
+  const domain = email.split('@')[1];
+  if (disposableDomains.some(d => domain?.includes(d))) return false;
+  
+  return true;
+};
+
+// Message validation - minimum length and not just gibberish
+const isValidMessage = (message: string) => {
+  if (message.trim().length < 10) return false;
+  
+  // Check for repeated characters (gibberish like "aaaaaa")
+  const repeatedChars = /(.)\1{5,}/.test(message);
+  if (repeatedChars) return false;
+  
+  return true;
+};
+
+// Name validation
+const isValidName = (name: string) => {
+  return name.trim().length >= 2 && name.trim().length <= 50;
+};
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
     
-    // Basic validation
-    if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) {
-      setError('Please fill in all required fields');
+    // Name validation
+    if (!isValidName(formState.name)) {
+      setError('Please enter a valid name (2-50 characters)');
+      setIsSubmitting(false);
+      return;
+    }
+    
+    // Email validation
+    if (!isValidEmail(formState.email)) {
+      setError('Please enter a valid email address. Disposable/temporary emails are not allowed.');
+      setIsSubmitting(false);
+      return;
+    }
+    
+    // Message validation
+    if (!isValidMessage(formState.message)) {
+      setError('Message must be at least 10 characters and not contain repeated gibberish.');
       setIsSubmitting(false);
       return;
     }
