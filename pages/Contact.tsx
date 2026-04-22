@@ -49,7 +49,6 @@ const Contact: React.FC = () => {
       setSubmitted(true);
       setFormState({ name: '', email: '', service: 'Full-Stack', message: '' });
       
-      // Auto-hide success message after 5 seconds
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
@@ -59,7 +58,6 @@ const Contact: React.FC = () => {
       setIsSubmitting(false);
       setError(error.text || 'Failed to send message. Please email me directly at muhammadahmer1qw2@gmail.com');
       
-      // Auto-hide error after 5 seconds
       setTimeout(() => {
         setError(null);
       }, 5000);
@@ -87,25 +85,37 @@ const Contact: React.FC = () => {
           </p>
         </header>
 
-        <div className="space-y-12">
-          <article className="flex items-center gap-8 group">
-            <div className="w-12 h-12 border border-white/10 flex items-center justify-center text-blue-500 transition-colors group-hover:border-blue-500">
-              <i className="fas fa-paper-plane" aria-hidden="true"></i>
+        {/* Trust Signals */}
+        <div className="space-y-8">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center">
+              <i className="fas fa-bolt text-emerald-500"></i>
             </div>
             <div>
-              <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black mb-1">Direct Email</p>
-              <p className="text-xl font-bold text-white uppercase tracking-tighter">muhammadahmer1qw2@gmail.com</p>
+              <p className="font-black text-white uppercase text-sm">Response within 24 hours</p>
+              <p className="text-slate-500 text-xs">Guaranteed reply to every message</p>
             </div>
-          </article>
-          <article className="flex items-center gap-8 group">
-            <div className="w-12 h-12 border border-white/10 flex items-center justify-center text-emerald-500 transition-colors group-hover:border-emerald-500">
-              <i className="fab fa-github" aria-hidden="true"></i>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+              <i className="fas fa-check-circle text-blue-500"></i>
             </div>
             <div>
-              <p className="text-[10px] text-slate-500 uppercase tracking-widest font-black mb-1">GitHub Profile</p>
-              <p className="text-xl font-bold text-white uppercase tracking-tighter">github.com/Ahmer-kun</p>
+              <p className="font-black text-white uppercase text-sm">No spam. No pressure.</p>
+              <p className="text-slate-500 text-xs">Just honest conversation about your project</p>
             </div>
-          </article>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center">
+              <i className="fas fa-code text-purple-500"></i>
+            </div>
+            <div>
+              <p className="font-black text-white uppercase text-sm">10+ projects built</p>
+              <p className="text-slate-500 text-xs">From HTML/CSS to full-stack and DApps</p>
+            </div>
+          </div>
         </div>
       </div>
 
