@@ -42,9 +42,6 @@ const Footer: React.FC = () => {
               <a href="https://www.linkedin.com/in/muhammad-ahmer-b88485283/" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-blue-500 transition-colors">
                 <i className="fab fa-linkedin text-xl"></i>
               </a>
-              <a href="https://github.com/Ahmer-kun" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-blue-500 transition-colors">
-                <i className="fas fa-globe text-xl"></i>
-              </a>
             </div>
           </div>
 

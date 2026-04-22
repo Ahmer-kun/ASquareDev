@@ -265,6 +265,69 @@ const Portfolio: React.FC = () => {
     }
   ];
 
+  // Helper function to get section-specific images based on blog id and section index
+  const getSectionImage = (blogId: string, sectionIndex: number): string => {
+    const imageMap: Record<string, Record<number, string>> = {
+      'tutorial-hell-to-production': {
+        0: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=1200',
+        1: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&q=80&w=1200',
+        2: 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&q=80&w=1200',
+        3: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200',
+        4: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
+        5: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200',
+        6: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200',
+        7: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200',
+        8: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200',
+      },
+      'journey-mern-web3': {
+        0: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=1200',
+        1: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1200',
+        2: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200',
+        3: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1200',
+      },
+      'tailwind-game-changer': {
+        0: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=1200',
+        1: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200',
+        2: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1200',
+      },
+      'building-projects-fresher': {
+        0: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200',
+        1: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200',
+        2: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1200',
+      },
+      'chrome-extensions-mv3-architecture': {
+        0: 'https://images.unsplash.com/photo-1607798748738-b15c40d33d57?auto=format&fit=crop&q=80&w=1200',
+        1: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&q=80&w=1200',
+        2: 'https://images.unsplash.com/photo-1633356122104-3b6017f58a0a?auto=format&fit=crop&q=80&w=1200',
+        3: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200',
+        4: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&q=80&w=1200',
+      },
+      'building-ai-chatbot-nodejs': {
+        0: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=1200',
+        1: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200',
+        2: 'https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&q=80&w=1200',
+        3: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1200',
+        4: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=1200',
+      },
+    };
+    
+    const blogImages = imageMap[blogId];
+    if (blogImages && blogImages[sectionIndex]) {
+      return blogImages[sectionIndex];
+    }
+    
+    const fallbackMap: Record<string, string> = {
+      'tutorial-hell-to-production': 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=1200',
+      'journey-mern-web3': 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=1200',
+      'tailwind-game-changer': 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=1200',
+      'building-projects-fresher': 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200',
+      'chrome-extensions-mv3-architecture': 'https://images.unsplash.com/photo-1607798748738-b15c40d33d57?auto=format&fit=crop&q=80&w=1200',
+      'building-ai-chatbot-nodejs': 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=1200',
+    };
+    
+    return fallbackMap[blogId] || 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200';
+  };
+
   // Get all unique tags from blogs
   const allTags = Array.from(new Set(blogs.flatMap(blog => blog.tags)));
 
@@ -337,6 +400,19 @@ const Portfolio: React.FC = () => {
                   <p className="text-slate-400 text-lg md:text-xl leading-relaxed font-medium">
                     {section.text}
                   </p>
+                  
+                  {/* Add image between sections, not after the last one */}
+                  {i < activeBlog.content.length - 1 && (
+                    <div className="pt-8">
+                      <div className="aspect-[16/9] overflow-hidden rounded-lg border border-white/10 grayscale hover:grayscale-0 transition-all duration-500">
+                        <img 
+                          src={getSectionImage(activeBlog.id, i)} 
+                          alt={`Illustration for ${section.heading || 'section'}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  )}
                 </section>
               ))}
               
