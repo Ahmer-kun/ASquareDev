@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # A² Dev Portfolio
 
 Personal portfolio of Muhammad Ahmer (A² Dev), a MERN Stack and Web3 developer. The site features project showcases, technical writing, and development services.
@@ -17,6 +16,7 @@ Live: [asquardev.vercel.app](https://asquardev.vercel.app/)
 
 - Responsive design for all devices
 - Dark theme with glass morphism effects
+- Live GitHub stats widget on the homepage
 - Project gallery with live demo links
 - Technical blog section
 - Contact form with EmailJS integration
@@ -52,8 +52,3 @@ Live: [asquardev.vercel.app](https://asquardev.vercel.app/)
 - Stock images from Unsplash
 - Icons from Font Awesome
 - Font from Google Fonts (Plus Jakarta Sans)
-=======
-# ASquareDev
-Development of my latest portfolio
-Link: https://a-square-dev.vercel.app/
->>>>>>> 63b629318e47a3f3972dad22ee5606d9d650ffcc

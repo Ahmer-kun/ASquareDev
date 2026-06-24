@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
-import Resume from './pages/Resume';  // Add this import
+import Resume from './pages/Resume';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -20,7 +20,7 @@ const TitleHandler: React.FC = () => {
       "/services": `${baseTitle} - Skills & Expertise`,
       "/portfolio": `${baseTitle} - Projects & Portfolio`,
       "/contact": `${baseTitle} - Contact & Hiring`,
-      "/resume": `${baseTitle} - Resume / CV`,  // Add this
+      "/resume": `${baseTitle} - Resume / CV`,
     };
     document.title = routeTitles[location.pathname] || baseTitle;
   }, [location]);
@@ -44,7 +44,7 @@ const App: React.FC = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/resume" element={<Resume />} />  // Add this route
+            <Route path="/resume" element={<Resume />} />
           </Routes>
         </main>
 

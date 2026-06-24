@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GitHubStats from '../components/GitHubStats';
 
 const Home: React.FC = () => {
   const skills = [
@@ -16,14 +17,6 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <header className="max-w-7xl mx-auto px-6 pt-16 md:pt-32 flex flex-col md:flex-row items-center justify-between gap-16">
         <div className="flex-1 space-y-10 text-center md:text-left">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded border border-white/10 bg-white/5">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Fresher Developer • &lt; 1 Year Exp</span>
-          </div>
-          
           <h1 className="text-5xl md:text-8xl font-black leading-[0.95] tracking-tighter text-white uppercase">
             IDEAS TO <br />
             <span className="text-blue-500 italic">REALITY</span> <br />
@@ -45,17 +38,7 @@ const Home: React.FC = () => {
         </div>
 
         <div className="flex-1 w-full max-w-lg">
-          <figure className="relative glass-effect p-2 rounded-lg overflow-hidden group">
-            <img 
-              src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=800" 
-              alt="Muhammad Ahmer - A² Dev Full Stack Programming" 
-              className="rounded-md w-full grayscale group-hover:grayscale-0 transition-all duration-700"
-            />
-            <figcaption className="absolute bottom-6 left-6 p-6 glass-effect border border-white/10 rounded-sm">
-              <p className="text-[10px] font-black uppercase tracking-widest text-blue-500 mb-1">MERN & Web3 Specialist</p>
-              <p className="text-sm font-bold text-white uppercase tracking-tighter">Growing Every Day</p>
-            </figcaption>
-          </figure>
+          <GitHubStats />
         </div>
       </header>
 
