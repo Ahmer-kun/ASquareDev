@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { setSEO } from '../utils/seo';
 
 interface Project {
   title: string;
@@ -24,18 +26,10 @@ interface Blog {
 }
 
 const Portfolio: React.FC = () => {
+  const { blogId } = useParams<{ blogId?: string }>();
+  const navigate = useNavigate();
   const [view, setView] = useState<'Projects' | 'Blogs'>('Projects');
-  const [activeBlog, setActiveBlog] = useState<Blog | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (activeBlog) {
-      document.title = `${activeBlog.title} | A² Dev Blog`;
-      window.scrollTo(0, 0);
-    } else {
-      document.title = "Projects & Portfolio | A² Dev";
-    }
-  }, [activeBlog]);
 
   const projects: Project[] = [
     {
@@ -265,6 +259,22 @@ const Portfolio: React.FC = () => {
     }
   ];
 
+  const activeBlog = blogId ? blogs.find((b) => b.id === blogId) ?? null : null;
+
+  useEffect(() => {
+    if (activeBlog) {
+      setSEO({
+        title: `${activeBlog.title} | A² Dev Blog`,
+        description: activeBlog.excerpt,
+        path: `/portfolio/${activeBlog.id}`,
+        image: activeBlog.image,
+      });
+      window.scrollTo(0, 0);
+    }
+    // The /portfolio (no post) case is handled by the route-level SEOHandler
+    // in App.tsx, so we don't need an else branch here.
+  }, [activeBlog]);
+
   // Helper function to get section-specific images based on blog id and section index
   const getSectionImage = (blogId: string, sectionIndex: number): string => {
     const imageMap: Record<string, Record<number, string>> = {
@@ -341,7 +351,7 @@ const Portfolio: React.FC = () => {
       <article className="min-h-screen bg-[#050505] pt-32 pb-32 animate-fadeIn">
         <div className="max-w-5xl mx-auto px-6 space-y-16">
           <button 
-            onClick={() => setActiveBlog(null)}
+            onClick={() => navigate('/portfolio')}
             className="group flex items-center gap-4 text-slate-500 hover:text-white transition-colors"
             aria-label="Back to Portfolio"
           >
@@ -423,7 +433,7 @@ const Portfolio: React.FC = () => {
                     <p className="text-slate-500 text-sm font-bold uppercase tracking-widest">Liked this article? Let's discuss your next project.</p>
                   </div>
                   <button 
-                    onClick={() => {setActiveBlog(null); window.scrollTo(0, 0);}}
+                    onClick={() => { navigate('/portfolio'); window.scrollTo(0, 0); }}
                     className="px-12 py-6 bg-white text-black font-black uppercase text-[10px] tracking-[0.3em] hover:bg-blue-600 hover:text-white transition-all shadow-2xl shadow-blue-600/10"
                   >
                     Back to Portfolio
@@ -547,7 +557,7 @@ const Portfolio: React.FC = () => {
                 {filteredBlogs.map((blog) => (
                   <article 
                     key={blog.id} 
-                    onClick={() => setActiveBlog(blog)}
+                    onClick={() => navigate(`/portfolio/${blog.id}`)}
                     className="group border border-white/5 hover:bg-white/[0.02] transition-all flex flex-col lg:flex-row items-stretch cursor-pointer overflow-hidden"
                   >
                     <div className="lg:w-1/3 aspect-video lg:aspect-auto overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
